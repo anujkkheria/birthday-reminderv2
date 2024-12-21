@@ -7,7 +7,7 @@ const Auth: React.FC = () => {
         <h1 className=' text-3xl font-semibold'>The People List</h1>
         <h6 className=' text-sm text-center'>For people who forget faces</h6>
       </div>
-      <div className=' w-11/12 h-3/4 md:w-1/2 md:h-1/2  bg-white m-5 shadow-md shadow-orange-400 box-border '>
+      <div className=' w-11/12 h-3/4  md:w-1/2 md:h-3/4  bg-white m-5 shadow-md shadow-orange-400'>
         <Outlet />
       </div>
     </div>

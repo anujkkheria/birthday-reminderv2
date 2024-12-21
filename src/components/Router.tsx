@@ -3,6 +3,7 @@ import Login from './page/Auth/Login'
 import Dashboard from './page/DashBoard/Dashboard'
 import Signup from './page/Auth/Signup'
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
+import AuthGuard from '../Utils/AuthGuard'
 const Router = () => {
   const router = createBrowserRouter([
     {
@@ -21,7 +22,11 @@ const Router = () => {
     },
     {
       path: '/dashboard',
-      element: <Dashboard />,
+      element: (
+        <AuthGuard>
+          <Dashboard />,
+        </AuthGuard>
+      ),
     },
     {
       path: '/',

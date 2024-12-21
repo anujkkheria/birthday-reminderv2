@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from 'react'
+import React, { useState, useReducer, createContext } from 'react'
 import { IUserReducer, Iuser } from './UserState'
 import reducer from './Reducer/UserReducer'
 
@@ -10,19 +10,23 @@ const user: Iuser = {
 }
 
 const useUserContext = (iniuser: Iuser) => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
   const [state, dispatch] = useReducer<IUserReducer>(reducer, iniuser)
   const setUser = (userInfo: Iuser) => {
     dispatch({ type: 'set_user', payload: userInfo })
+    setIsLoggedIn(true)
   }
   const logout = () => {
+    setIsLoggedIn(false)
     dispatch({ type: 'logout' })
   }
-  return { state, setUser, logout }
+  return { isLoggedIn, state, setUser, logout }
 }
 
 type UseUserContext = ReturnType<typeof useUserContext>
 
 const userItems: UseUserContext = {
+  isLoggedIn: false,
   state: user,
   setUser: () => {},
   logout: () => {},
